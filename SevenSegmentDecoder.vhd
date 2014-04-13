@@ -1,44 +1,56 @@
-#### Example of a loop
-Note that the loop might not synthesize but works for Testbench. There are other types of loops that will synthesize. Check Stack Overlow for more information.
+-- 7 SEGMENT DECODER    
 
-```VHDL
-stim_proc: process
-	-- Variables in process must be declared BEFORE begin
-	variable loopnum : std_logic_vector (3 downto 0);
-	   begin	
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity segmentdecoder is
+    Port ( Digit : in  STD_LOGIC_VECTOR (3 downto 0);
+           segmentA : out  STD_LOGIC;
+           segmentB : out  STD_LOGIC;
+           segmentC : out  STD_LOGIC;
+           segmentD : out  STD_LOGIC;
+           segmentE : out  STD_LOGIC;
+           segmentF : out  STD_LOGIC;
+		   segmentG : out  STD_LOGIC);
+end segmentdecoder;
+
+architecture Behavioral of segmentdecoder is
+
+begin
+
+process(Digit)
+	variable Decode_data : std_logic_vector(6 downto 0);
+	
+	begin 
+	
+	case Digit is
+		when "0000" => Decode_Data := "1111110"; --0
+		when "0001" => Decode_Data := "0110000"; --1
+		when "0010" => Decode_Data := "1101101"; --2
+		when "0011" => Decode_Data := "1111001"; --3
+		when "0100" => Decode_Data := "0110011"; --4
+		when "0101" => Decode_Data := "1011011"; --5
+		when "0110" => Decode_Data := "1011111"; --6
+		when "0111" => Decode_Data := "1110000"; --7
+		when "1000" => Decode_Data := "1111111"; --8
+		when "1001" => Decode_Data := "1111011"; --9
+		when "1010" => Decode_Data := "1110111"; --A
+		when "1011" => Decode_Data := "0011111"; --B
+		when "1100" => Decode_Data := "1001110"; --C
+		when "1101" => Decode_Data := "0111101"; --D
+		when "1110" => Decode_Data := "1001111"; --E
+		when "1111" => Decode_Data := "1000111"; --F
+		when others => Decode_Data := "0111110"; --H ERROR
+	end case;
+	
+		segmentA <= not Decode_Data(6);
+		segmentB <= not Decode_Data(5);
+		segmentC <= not Decode_Data(4);
+		segmentD <= not Decode_Data(3);
+		segmentE <= not Decode_Data(2);
+		segmentF <= not Decode_Data(1);
+		segmentG <= not Decode_Data(0);
 		
-			-- Note that this loop might not synthesize
-			for i in 0 to 9 loop
-				Digit <= loopnum;
-				loopnum := loopnum + '1';
-				wait for 100 ns;
-			end loop;
-			
-			-- Reset our counter
-			-- loopnum := "0000";
-			-- Not neccessary to reset counter since variables are destroyed
-			-- after process is finished. 
 end process;
-```
-Also note that there has to be some changes to the libraries used in order to do logical arithmetics.
 
-```VHDL
-LIBRARY ieee;
-USE ieee.std_logic_1164.ALL;
-
--- These two libraries enable arithmetic operations like
--- loopnum := loopnum + '1';
-USE ieee.std_logic_arith.all;
-use ieee.STD_LOGIC_UNSIGNED.all;
-
--- Enables to convert std_logic_vector to integer for arithmetical operations
--- https://stackoverflow.com/questions/854684/why-cant-i-increment-this-std-logic-vector
--- Note that the syntax for operations is different
-
--- loopnum <= std_logic_vector(unsigned(loopnum) + 1);
--- use ieee.numeric_std.all;
- 
--- Uncomment the following library declaration if using
--- arithmetic functions with Signed or Unsigned values
---USE ieee.numeric_std.ALL;
-```
+end Behavioral;
