@@ -18,7 +18,8 @@ entity Clocks is
 			LED1 : out  STD_LOGIC;
 			LED2 : out  STD_LOGIC;
 			LED3 : out  STD_LOGIC;
-			LED4 : out  STD_LOGIC);
+			LED4 : out  STD_LOGIC
+		);
 end Clocks;
 
 architecture Behavioral of Clocks is
