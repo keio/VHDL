@@ -13,12 +13,12 @@ use IEEE.NUMERIC_STD.ALL;
 --use UNISIM.VComponents.all;
 
 entity Clocks is
-    Port ( clk  : in   STD_LOGIC;
-           LED0 : out  STD_LOGIC;
-			  LED1 : out  STD_LOGIC;
-			  LED2 : out  STD_LOGIC;
-			  LED3 : out  STD_LOGIC;
-			  LED4 : out  STD_LOGIC);
+    Port (  clk  : in   STD_LOGIC;
+			LED0 : out  STD_LOGIC;
+			LED1 : out  STD_LOGIC;
+			LED2 : out  STD_LOGIC;
+			LED3 : out  STD_LOGIC;
+			LED4 : out  STD_LOGIC);
 end Clocks;
 
 architecture Behavioral of Clocks is
@@ -36,7 +36,7 @@ begin
 
 LED0_1Hz : process (clk)
 	-- Local values
-   variable count : integer;
+  	variable count : integer;
 	constant desired_freq : integer := 1;	
 begin
    if rising_edge(clk) then
@@ -53,7 +53,7 @@ LED0 <= Hz1trigger;
 
 LED1_2Hz : process (clk)
 	-- Local values
-   variable count : integer;
+	variable count : integer;
 	constant desired_freq : integer := 2;	
 begin
    if rising_edge(clk) then
@@ -69,7 +69,7 @@ LED1 <= Hz2trigger;
 
 LED2_4Hz : process (clk)
 	-- Local values
-   variable count : integer := 0;
+	variable count : integer := 0;
 	constant desired_freq : integer := 4;	
 begin
    if (rising_edge(clk)) then
@@ -85,7 +85,7 @@ LED2 <= Hz4trigger;
 
 LED3_8Hz : process (clk)
 	-- Local values
-   variable count : integer := 0;
+	variable count : integer := 0;
 	constant desired_freq : integer := 8;	
 begin
    if (rising_edge(clk)) then
@@ -101,7 +101,7 @@ LED3 <= Hz8trigger;
 
 LED4_16Hz : process (clk)
 	-- Local values
-   variable count : integer := 0;
+	variable count : integer := 0;
 	constant desired_freq : integer := 16;	
 begin
    if (rising_edge(clk)) then
