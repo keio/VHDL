@@ -13,12 +13,12 @@ use IEEE.NUMERIC_STD.ALL;
 --use UNISIM.VComponents.all;
 
 entity Clocks is
-    Port (  clk  : in   STD_LOGIC;
-			LED0 : out  STD_LOGIC;
-			LED1 : out  STD_LOGIC;
-			LED2 : out  STD_LOGIC;
-			LED3 : out  STD_LOGIC;
-			LED4 : out  STD_LOGIC
+	Port (  clk  : in   STD_LOGIC;
+		LED0 : out  STD_LOGIC;
+		LED1 : out  STD_LOGIC;
+		LED2 : out  STD_LOGIC;
+		LED3 : out  STD_LOGIC;
+		LED4 : out  STD_LOGIC
 		);
 end Clocks;
 
