@@ -1,10 +1,10 @@
 # Eksempel på markdown
 **Det er enkelt å formatere** *italic* tekst
-===
+
 Kode er kjekt å vise med kommentarer
 ```VHDL
 -- Comment
-    variable kuze : natural := 12;
+    variable kuze : natural = 12;
 ```
 Enda mer tekst
-(Dagbladet)[http://www.db.no]
+[DB] (http://db.no)
