@@ -31,8 +31,8 @@ Used in a program
 General construction
 ```VHDL
 <target> <= <expression> when <condition> else
-<expression> when <condition> else
-<expression>;
+            <expression> when <condition> else
+            <expression>;
 ```
 Used in a program
 ```VHDL
@@ -61,7 +61,7 @@ General construction
 ```VHDL
 with <choose_expression> select
 target <= <expression> when <choices>,
-<expression> when <choices>;
+          <expression> when <choices>;
 ```
 Used in a program
 ```VHDL
@@ -142,6 +142,7 @@ Used in a program
 ```VHDL
 A <= B;
 ```
+The sequential style of a signal assignment statement is syntactically equivalent to the concurrent signal assignment statement. Another way to look at it is that if a signal assignment statement appears inside of a process then it is a sequential statement; otherwise, it is a concurrent signal assignment statement.
 
 ### 2. If Statement
 General construction
@@ -152,7 +153,6 @@ Used in a program
 ```VHDL
 A <= B XOR C;
 ```
-The sequential style of a signal assignment statement is syntactically equivalent to the concurrent signal assignment statement. Another way to look at it is that if a signal assignment statement appears inside of a process then it is a sequential statement; otherwise, it is a concurrent signal assignment statement.
 
 ### 3. Case Statement
 General construction
