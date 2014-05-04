@@ -87,9 +87,38 @@ Now just remember that the process statement is a statement which contains a cer
 
 General construction
 ```VHDL
-
+-- this is my first process
+my_label: process(sensitivity_list) is
+<item_declaration>
+begin
+<sequential_statements>
+end process my_label;
 ```
 Used in a program
 ```VHDL
-
+1 -- library declaration
+2 library IEEE;
+3 use IEEE.std_logic_1164.all;
+4 -- entity
+5 entity my_system is
+6 port ( A,B,C : in std_logic;
+7 F,Q : out std_logic);
+8 end my_system;
+9 -- architecture
+10 architecture behav of my_system is
+11 signal A1 : std_logic;
+12 begin
+13 some_proc: process(A,B,C) is
+14 variable a,b : integer;
+15 begin
+16 a:=74;
+17 b:=67;
+18 A1 <= A and B and C;
+19 if a>b then
+20 F <= A1 or B;
+21 end if;
+22 end process some_proc;
+23 -- we are outside the process body
+24 Q <= not A;
+25 end behav;
 ```
