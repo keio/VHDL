@@ -1,4 +1,4 @@
-#### Four types of concurrent statements
+## Four types of concurrent statements
 These types represent the tools we use to implement digital circuits in VHDL. 
 
 ### 1. Concurrent Signal Assignment Statements
@@ -83,7 +83,6 @@ end mux4t1_2;
 ```
 
 ### 4. Process Statement
-
 Now just remember that the process statement is a statement which contains a certain number of instructions that, when the process statement is executed, are executed sequentially. In other words, the process statement is a tool that you can use any time you want to execute a certain number of instructions in a sequential manner (one instruction after the other, from top to bottom). Do not forget, however, that the process statement in itself is a concurrent statement and therefore will be executed together with the other concurrent statements in the body of the architecture where it sits.
 
 General construction
