@@ -1,5 +1,9 @@
-## Four types of concurrent statements
+# Four types of concurrent statements
 These types represent the tools we use to implement digital circuits in VHDL. 
+- Concurrent 
+- Conditional 
+- Selected
+- Process
 
 ### 1. Concurrent Signal Assignment Statements
 General construction
@@ -121,4 +125,41 @@ Used in a program
 23 -- we are outside the process body
 24 Q <= not A;
 25 end behav;
+```
+You should strive to keep your process statements simple. Divide up your intended functionality into several process statements that communicate with each other rather than one giant, complicated, bizarre process statement. Remember, process statements are concurrent statements: they all can be executed concurrently. Try to take advantage of this feature in order to simplify your circuit descriptions.
+
+# Three Types of Sequential Statements
+- Signal Assignment Statement
+- If Statement
+- Case Statement
+
+### 1. Signal Assignment Statement
+General construction
+```VHDL
+<=
+```
+Used in a program
+```VHDL
+A <= B;
+```
+
+### 2. If Statement
+General construction
+```VHDL
+<=
+```
+Used in a program
+```VHDL
+A <= B XOR C;
+```
+The sequential style of a signal assignment statement is syntactically equivalent to the concurrent signal assignment statement. Another way to look at it is that if a signal assignment statement appears inside of a process then it is a sequential statement; otherwise, it is a concurrent signal assignment statement.
+
+### 3. Case Statement
+General construction
+```VHDL
+<=
+```
+Used in a program
+```VHDL
+A <= B;
 ```
