@@ -147,19 +147,58 @@ The sequential style of a signal assignment statement is syntactically equivalen
 ### 2. If Statement
 General construction
 ```VHDL
-<=
+if (condition) then
+<statements>
+elsif (condition) then
+<statements>
+else
+<statements>
+end if;
 ```
 Used in a program
 ```VHDL
-A <= B XOR C;
+-- library declaration
+library IEEE;
+use IEEE.std_logic_1164.all;
+-- entity
+entity mux_8t1 is
+port ( Data_in : in std_logic_vector (7 downto 0);
+SEL : in std_logic_vector (2 downto 0);
+F_CTRL : out std_logic);
+end mux_8t1;
+-- architecture
+architecture mux_8t1_arc of mux_8t1 is
+begin
+my_mux: process (Data_in,SEL)
+begin
+if (SEL = "111") then F_CTRL <= Data_in(7);
+elsif (SEL = "110") then F_CTRL <= Data_in(6);
+elsif (SEL = "101") then F_CTRL <= Data_in(5);
+elsif (SEL = "100") then F_CTRL <= Data_in(4);
+elsif (SEL = "011") then F_CTRL <= Data_in(3);
+elsif (SEL = "010") then F_CTRL <= Data_in(2);
+elsif (SEL = "001") then F_CTRL <= Data_in(1);
+elsif (SEL = "000") then F_CTRL <= Data_in(0);
+else F_CTRL <= '0';
+end if;
+end process my
 ```
+The VHDL if statement is the sequential equivalent to the VHDL conditional signal assignment statement. These two statements essentially do the same thing but the if statement is a sequential statement found inside a process body while the conditional signal assignment statement is one form of concurrent signal assignment.
 
 ### 3. Case Statement
 General construction
 ```VHDL
-<=
+case (expression) is
+when choices =>
+    <sequential statements>
+when choices =>
+    <sequential statements>
+when others =>
+    <sequential statements>
+end case;
 ```
 Used in a program
 ```VHDL
 A <= B;
 ```
+The VHDL case statement is the sequential equivalent of the VHDL selected signal assignment statement. These two statements essentially have the same capabilities but the case statement is a sequential statement found in a process body while the selected signal assignment statement is one form of concurrent signal assignment. The when others line is not required but should be used as good programming practice.
