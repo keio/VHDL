@@ -5,3 +5,7 @@ These types represent the tools we use to implement digital circuits in VHDL.
 ´´´VHDL
 <target> <= <expression>;
 ´´´
+
+'''VHDL
+<target> <= <expression>;
+'''
